@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Carrusel de Imágenes</title>
+<style>
+  .carrusel {
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+  }
+  .contenedor-imagenes {
+    display: flex;
+    width: 400%;
+    transition: transform 0.5s ease;
+  }
+  .imagen {
+    width: 25%;
+    transition: opacity 1s ease;
+  }
+  .imagen img {
+    width: 100%;
+    display: block;
+  }
+  .botones-carrusel {
+    text-align: center;
+  }
+  .boton-carrusel {
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    background-color: #333;
+    color: white;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="carrusel">
+  <div class="contenedor-imagenes" id="contenedorImagenes">
+    <!-- Asegúrate de reemplazar './images/slider 6.png', './images/slider 6.png', etc., con las rutas de tus propias imágenes -->
+    <div class="imagen"><img src="./images/slider 6.png" alt="Imagen 1"></div>
+    <div class="imagen"><img src="./images/slider_3.jpg" alt="Imagen 2"></div>
+    <div class="imagen"><img src="./images/slider_2.jpg" alt="Imagen 3"></div>
+    <div class="imagen"><img src="./images/slider_1.jpg" alt="Imagen 4"></div>
+  </div>
+</div>
+<div class="botones-carrusel">
+  <span class="boton-carrusel" onclick="mover(-1)">Anterior</span>
+  <span class="boton-carrusel" onclick="mover(1)">Siguiente</span>
+</div>
+
+<script>
+var indice = 0;
+
+function mover(direccion) {
+  var imagenes = document.getElementsByClassName('imagen');
+  var totalImagenes = imagenes.length;
+  indice = (indice + direccion + totalImagenes) % totalImagenes;
+  var desplazamiento = -indice * 100;
+  document.getElementById('contenedorImagenes').style.transform = 'translateX(' + desplazamiento + '%)';
+}
+</script>
+
+</body>
+</html>
